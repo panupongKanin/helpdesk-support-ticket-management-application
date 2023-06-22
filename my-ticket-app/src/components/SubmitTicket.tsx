@@ -41,7 +41,6 @@ function SubmitTicket({ formSubmitTicket, setSubmitTicket, formTicketInformation
             setLoadings((prevLoadings) => {
                 const newLoadings = [...prevLoadings];
                 newLoadings[index] = false;
-                activeStep === steps.length ? handleSubmit() : handleNext();
                 submit();
                 return newLoadings;
             });
@@ -54,9 +53,6 @@ function SubmitTicket({ formSubmitTicket, setSubmitTicket, formTicketInformation
         setActiveStep(activeStep + 1);
     };
 
-    const handleSubmit = () => {
-        // console.log("Submit");
-    };
 
     const handleChangeStatus = (value: string) => {
         setSubmitTicket({ ...formSubmitTicket, Status: value });
@@ -169,7 +165,7 @@ function SubmitTicket({ formSubmitTicket, setSubmitTicket, formTicketInformation
                     Swal.fire({
                         // Display Back-end text response 
                         icon: 'error',
-                        title: 'Error',
+                        title: res.error.split(";")[0],
                         showConfirmButton: false,
                         timer: 1500
                     });

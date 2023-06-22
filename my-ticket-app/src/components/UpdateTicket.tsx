@@ -48,13 +48,6 @@ function UpdateTicket({ formSubmitTicket, setSubmitTicket, formTicketInformation
         }, 3000);
     };
 
-
-
-    const handleNext = () => {
-        setActiveStep(activeStep + 1);
-    };
-
-
     const handleChangeStatus = (value: string) => {
         setSubmitTicket({ ...formSubmitTicket, Status: value });
     };
@@ -136,7 +129,7 @@ function UpdateTicket({ formSubmitTicket, setSubmitTicket, formTicketInformation
                     Swal.fire({
                         // Display Back-end text response 
                         icon: 'error',
-                        title: 'Error',
+                        title: res.error.split(";")[0],
                         showConfirmButton: false,
                         timer: 1500
                     });
