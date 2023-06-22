@@ -1,7 +1,9 @@
 package entity
 
 import (
+	"github.com/asaskevich/govalidator"
 	"gorm.io/gorm"
+	"time"
 )
 
 type Ticket struct {
@@ -22,13 +24,13 @@ type Ticket struct {
 
 type TicketInformation struct {
 	gorm.Model
-	EventDate       string 
-	EventTime       string
-	Venue           string
-	TicketPrice     float64
-	Sales           string
-	Restrictions    string
-	TermsConditions string
+	EventDate       string `valid:"required~Please enter a Event Date"`
+	EventTime       string `valid:"required~Please enter a Event Time"`
+	Venue           string `valid:"required~Please enter a Venue"`
+	TicketPrice     float64 `valid:"float,required~Please enter a Ticket Price"`
+	Sales           string `valid:"required~Please enter a Sales"`
+	Restrictions    string `valid:"required~Please enter a Restrictions"`
+	TermsConditions string `valid:"required~Please enter a TermsConditions"`
 
 	Tickets []Ticket `gorm:"foreignKey:TicketInformationID"`
 }
@@ -45,4 +47,15 @@ type Status struct {
 	gorm.Model
 	StatusName string
 	Tickets    []Ticket `gorm:"foreignKey:StatusID"`
+}
+
+func init() {
+	govalidator.CustomTypeTagMap.Set("CheckDateTime_ClaimTime", func(i interface{}, _ interface{}) bool {
+		t := i.(time.Time)
+		if t.Before(time.Now().Add(-30*time.Minute)) || t.After(time.Now().Add(30*time.Minute)) {
+			return false
+		} else {
+			return true
+		}
+	})
 }
