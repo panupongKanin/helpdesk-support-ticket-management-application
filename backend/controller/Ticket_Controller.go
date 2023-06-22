@@ -1,6 +1,7 @@
 package controller
 
 import (
+	"github.com/asaskevich/govalidator"
 	"github.com/gin-gonic/gin"
 	"github.com/panupongKanin/helpdesk-support-ticket-management-application/entity"
 	"net/http"
@@ -35,6 +36,12 @@ func CreateTicket(c *gin.Context) {
 	// 12: ค้นหา Status ด้วย id
 	if tx := entity.DB().Where("id = ?", Ticket.StatusID).First(&Status); tx.RowsAffected == 0 {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "Status not found"})
+		return
+	}
+
+	// แทรกการ validate ไว้ช่วงนี้ของ controller
+	if _, err := govalidator.ValidateStruct(Ticket); err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return
 	}
 
@@ -75,6 +82,7 @@ func ListTickets(c *gin.Context) {
 	}
 	c.JSON(http.StatusOK, gin.H{"data": listTickets})
 }
+
 // PATCH /updateTicket
 func UpdateTicket(c *gin.Context) {
 	var TicketInformation entity.TicketInformation
@@ -103,6 +111,12 @@ func UpdateTicket(c *gin.Context) {
 	// 12: ค้นหา Status ด้วย id
 	if tx := entity.DB().Where("id = ?", Ticket.StatusID).First(&Status); tx.RowsAffected == 0 {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "Status not found"})
+		return
+	}
+	
+	// แทรกการ validate ไว้ช่วงนี้ของ controller
+	if _, err := govalidator.ValidateStruct(Ticket); err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return
 	}
 

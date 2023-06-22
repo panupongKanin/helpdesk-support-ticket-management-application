@@ -1,6 +1,7 @@
 package controller
 
 import (
+	"github.com/asaskevich/govalidator"
 	"github.com/gin-gonic/gin"
 	"github.com/panupongKanin/helpdesk-support-ticket-management-application/entity"
 	"net/http"
@@ -15,11 +16,16 @@ func CreatContactInformation(c *gin.Context) {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return
 	}
+	// แทรกการ validate ไว้ช่วงนี้ของ controller
+	if _, err := govalidator.ValidateStruct(ContactInformation); err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
 
 	// โยงข้อมูล
 	contactInformationData := entity.ContactInformation{
-		Email: ContactInformation.Email,
-		Phone: ContactInformation.Phone,
+		Email:   ContactInformation.Email,
+		Phone:   ContactInformation.Phone,
 		Address: ContactInformation.Address,
 	}
 
@@ -73,6 +79,11 @@ func UpdateContactInformation(c *gin.Context) {
 		return
 	}
 	if err := entity.DB().Model(updateContactInformation).Where("id = ?", updateContactInformation.ID).Update("Email", updateContactInformation.Email).Update("Phone", updateContactInformation.Phone).Update("Address", updateContactInformation.Address).Error; err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
+	// แทรกการ validate ไว้ช่วงนี้ของ controller
+	if _, err := govalidator.ValidateStruct(updateContactInformation); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return
 	}

@@ -1,6 +1,7 @@
 package controller
 
 import (
+	"github.com/asaskevich/govalidator"
 	"github.com/gin-gonic/gin"
 	"github.com/panupongKanin/helpdesk-support-ticket-management-application/entity"
 	"net/http"
@@ -12,6 +13,12 @@ func CreatTicketInformation(c *gin.Context) {
 
 	// bind เข้าตัวแปร TicketInformation
 	if err := c.ShouldBindJSON(&TicketInformation); err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
+
+	// แทรกการ validate ไว้ช่วงนี้ของ controller
+	if _, err := govalidator.ValidateStruct(TicketInformation); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return
 	}
@@ -80,37 +87,10 @@ func UpdateTicketInformation(c *gin.Context) {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return
 	}
+	// แทรกการ validate ไว้ช่วงนี้ของ controller
+	if _, err := govalidator.ValidateStruct(updateTicketInformation); err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
 	c.JSON(http.StatusOK, gin.H{"data": updateTicketInformation})
 }
-
-// // DELETE /users/:id
-// func DeleteTicketInformation(c *gin.Context) {
-// 	id := c.Param("id")
-// 	if tx := entity.DB().Exec("DELETE FROM ticketInformations WHERE id = ?", id); tx.RowsAffected == 0 {
-// 		   c.JSON(http.StatusBadRequest, gin.H{"error": "user not found"})
-// 		   return
-// 	}
-
-// 	c.JSON(http.StatusOK, gin.H{"data": id})
-// }
-
-// // PATCH /users
-// func UpdateTicketInformation(c *gin.Context) {
-// 	var user entity.User
-// 	if err := c.ShouldBindJSON(&user); err != nil {
-// 		   c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
-// 		   return
-// 	}
-
-// 	if tx := entity.DB().Where("id = ?", user.ID).First(&user); tx.RowsAffected == 0 {
-// 		   c.JSON(http.StatusBadRequest, gin.H{"error": "user not found"})
-// 		   return
-// 	}
-
-// 	if err := entity.DB().Save(&user).Error; err != nil {
-// 		   c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
-// 		   return
-// 	}
-
-// 	c.JSON(http.StatusOK, gin.H{"data": user})
-// }

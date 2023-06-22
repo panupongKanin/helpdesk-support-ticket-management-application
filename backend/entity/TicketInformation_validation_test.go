@@ -187,5 +187,5 @@ func TestTermsConditionsNotBlank(t *testing.T) {
 	g.Expect(err).ToNot(BeNil())
 
 	// err.Error ต้องมี error message แสดงออกมา
-	g.Expect(err.Error()).To(Equal("Please enter a TermsConditions"))
+	g.Expect(err.Error()).To(Equal("Please enter a Terms Conditions"))
 }
