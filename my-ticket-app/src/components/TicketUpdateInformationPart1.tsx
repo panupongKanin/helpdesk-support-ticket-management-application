@@ -9,15 +9,12 @@ import Step from '@mui/material/Step';
 import StepLabel from '@mui/material/StepLabel';
 import type { DatePickerProps, TimePickerProps } from 'antd';
 import { DatePicker, TimePicker, InputNumber, Input, Button } from 'antd';
-
-
-import "./review.css";
 import dayjs, { Dayjs } from 'dayjs';
+
+import "./sTicket.css";
 
 
 const { TextArea } = Input;
-
-
 
 function TicketUpdateInformationPart1({ formTicketInformation, setTicketInformation, activeStep, setActiveStep, steps }: any) {
     const { valueEventDate, valueEventTime, valueVenue, valueTicketPrice } = formTicketInformation
@@ -97,8 +94,6 @@ function TicketUpdateInformationPart1({ formTicketInformation, setTicketInformat
                 id='ticketFormFrame'
                 sx={{ marginTop: 9 }}
             >
-
-
                 <Typography id='textTopic'>
                     Update Ticket Information
                 </Typography >

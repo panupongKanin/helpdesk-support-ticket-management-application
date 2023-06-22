@@ -11,7 +11,7 @@ import type { DatePickerProps, TimePickerProps } from 'antd';
 import { DatePicker, TimePicker, InputNumber, Input, Button } from 'antd';
 
 
-import "./review.css";
+import "./sTicket.css";
 import dayjs, { Dayjs } from 'dayjs';
 
 
@@ -97,8 +97,6 @@ function TicketInformationPart1({ formTicketInformation, setTicketInformation, a
                 id='ticketFormFrame'
                 sx={{ marginTop: 9 }}
             >
-
-
                 <Typography id='textTopic'>
                     Ticket Information
                 </Typography >

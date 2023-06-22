@@ -11,7 +11,7 @@ import type { DatePickerProps } from 'antd';
 import { DatePicker, TimePicker, InputNumber, Input, Button, Select } from 'antd';
 import Swal from 'sweetalert2' // Alert text --> npm install sweetalert2
 
-import "./review.css";
+import "./sTicket.css";
 
 
 const { TextArea } = Input;
@@ -28,22 +28,6 @@ function SubmitTicket({ formSubmitTicket, setSubmitTicket, formTicketInformation
 
     const [loadings, setLoadings] = useState<boolean[]>([]);
 
-    const enterLoading = (index: number) => {
-        setLoadings((prevLoadings) => {
-            const newLoadings = [...prevLoadings];
-            newLoadings[index] = true;
-            return newLoadings;
-        });
-
-        setTimeout(() => {
-            setLoadings((prevLoadings) => {
-                const newLoadings = [...prevLoadings];
-                newLoadings[index] = false;
-                handleBack();
-                return newLoadings;
-            });
-        }, 3000);
-    };
 
     const enterLoadingnext = (index: number) => {
         setLoadings((prevLoadings) => {
@@ -70,9 +54,6 @@ function SubmitTicket({ formSubmitTicket, setSubmitTicket, formTicketInformation
         setActiveStep(activeStep + 1);
     };
 
-    const handleBack = () => {
-        setActiveStep(activeStep - 1);
-    };
     const handleSubmit = () => {
         // console.log("Submit");
     };
@@ -175,7 +156,7 @@ function SubmitTicket({ formSubmitTicket, setSubmitTicket, formTicketInformation
                     // Alert การบันทึกสำเส็จ
                     Swal.fire({
                         icon: 'success',
-                        title: 'บันทึกสำเร็จ',
+                        title: 'Success',
                         showConfirmButton: false,
                         timer: 1500
                     });
@@ -188,7 +169,7 @@ function SubmitTicket({ formSubmitTicket, setSubmitTicket, formTicketInformation
                     Swal.fire({
                         // Display Back-end text response 
                         icon: 'error',
-                        title: 'บันทึกไม่สำเร็จ',
+                        title: 'Error',
                         showConfirmButton: false,
                         timer: 1500
                     });
@@ -212,6 +193,7 @@ function SubmitTicket({ formSubmitTicket, setSubmitTicket, formTicketInformation
         >
             <Box
                 id='ticketFormFrame'
+                sx={{ marginTop: 9 }}
             >
 
                 <Typography id='textTopic'>

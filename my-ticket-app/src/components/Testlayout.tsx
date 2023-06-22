@@ -7,7 +7,7 @@ import Container from '@mui/material/Container';
 import TicketForTable from './TicketForTable';
 import CssBaseline from '@mui/material/CssBaseline';
 
-import "./review.css"
+import "./sTicket.css"
 import { Box } from '@mui/system';
 
 

@@ -10,7 +10,7 @@ import type { DatePickerProps } from 'antd';
 import { DatePicker, TimePicker, InputNumber, Input, Button } from 'antd';
 import Swal from 'sweetalert2' // Alert text --> npm install sweetalert2
 
-import "./review.css";
+import "./sTicket.css";
 
 
 const { TextArea } = Input;
@@ -51,7 +51,6 @@ function TicketUpdateInformationPart2({ formTicketInformation, setTicketInformat
                 const newLoadings = [...prevLoadings];
                 newLoadings[index] = false;
                 submitEdit();
-                handleNext();
                 return newLoadings;
             });
         }, 3000);
@@ -80,8 +79,6 @@ function TicketUpdateInformationPart2({ formTicketInformation, setTicketInformat
             TermsConditions: valueTermsConditions,
         };
 
-        console.log(data);
-    
         const apiUrl = "http://localhost:8080/updateTicketInformation";
         const requestOptions = {
             method: "PATCH",
@@ -92,22 +89,21 @@ function TicketUpdateInformationPart2({ formTicketInformation, setTicketInformat
             .then((response) => response.json())
             .then((res) => {
                 if (res.data) {
-                    console.log("Done");
 
+                    handleNext();
                     // Alert การบันทึกสำเส็จ
                     Swal.fire({
                         icon: 'success',
-                        title: 'บันทึกสำเร็จ',
+                        title: 'Success',
                         showConfirmButton: false,
                         timer: 1500
                     });
 
                 } else {
-                    console.log("Error");
                     Swal.fire({
                         // Display Back-end text response 
                         icon: 'error',
-                        title: 'บันทึกไม่สำเร็จ',
+                        title: res.error.split(";")[0],
                         showConfirmButton: false,
                         timer: 1500
                     });
@@ -122,7 +118,7 @@ function TicketUpdateInformationPart2({ formTicketInformation, setTicketInformat
         >
             <Box
                 id='ticketFormFrame'
-            // sx={{ marginTop: 10 }}
+                sx={{ marginTop: 9 }}
             >
 
                 <Typography id='textTopic'>

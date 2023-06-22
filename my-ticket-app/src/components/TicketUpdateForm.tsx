@@ -3,11 +3,12 @@ import CssBaseline from '@mui/material/CssBaseline';
 import Ticket from './Ticket';
 import Testlayout from './Testlayout';
 import { Box } from '@mui/system';
-import "./review.css";
 import TicketUpdateInformationPart1 from './TicketUpdateInformationPart1';
 import TicketUpdateInformationPart2 from './TicketUpdateInformationPart2';
 import TicketUpdateContactInformation from './TicketUpdateContactInformation';
 import UpdateTicket from './UpdateTicket';
+
+import "./sTicket.css";
 
 const steps = [
     'Ticket Information [1]',
@@ -35,7 +36,7 @@ const defaultDataContactInformation = {
 };
 
 const defaultDataSubmitTicket = {
-    TicketID:"",
+    TicketID: "",
     Title: "",
     Description: "",
     Status: null,
@@ -122,24 +123,21 @@ function TicketUpdateForm() {
     return (
 
         <div className="app">
-            <CssBaseline />
             <Box
                 display="flex"
-                width="160vh"
-                alignItems="center"
+                width="140vh"
             >
                 <div style={{ flex: '30%' }}>
                     {/* Left Section */}
-                    <div >
+                    <div style={{ marginTop: '21vh', paddingRight: 10 }}>
                         <Ticket formTicketInformation={formTicketInformation} formContactInformation={formContactInformation} formSubmitTicket={formSubmitTicket} />
                     </div>
                 </div>
                 <div style={{ flex: '70%' }}>
                     {/* Right Section */}
-                    <form className='form-container'>
-                        {/* <Ticket  /> */}
+                    <div >
                         <div className='text-start'>{PageDisplay()}</div>
-                    </form >
+                    </div>
                 </div>
             </Box>
         </div>

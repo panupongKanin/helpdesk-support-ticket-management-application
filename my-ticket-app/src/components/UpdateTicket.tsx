@@ -11,7 +11,7 @@ import type { DatePickerProps } from 'antd';
 import { DatePicker, TimePicker, InputNumber, Input, Button, Select } from 'antd';
 import Swal from 'sweetalert2' // Alert text --> npm install sweetalert2
 
-import "./review.css";
+import "./sTicket.css";
 
 
 const { TextArea } = Input;
@@ -30,23 +30,6 @@ function UpdateTicket({ formSubmitTicket, setSubmitTicket, formTicketInformation
 
     const [loadings, setLoadings] = useState<boolean[]>([]);
 
-    const enterLoading = (index: number) => {
-        setLoadings((prevLoadings) => {
-            const newLoadings = [...prevLoadings];
-            newLoadings[index] = true;
-            return newLoadings;
-        });
-
-        setTimeout(() => {
-            setLoadings((prevLoadings) => {
-                const newLoadings = [...prevLoadings];
-                newLoadings[index] = false;
-                handleBack();
-                return newLoadings;
-            });
-        }, 3000);
-    };
-
     const enterLoadingnext = (index: number) => {
         setLoadings((prevLoadings) => {
             const newLoadings = [...prevLoadings];
@@ -59,7 +42,6 @@ function UpdateTicket({ formSubmitTicket, setSubmitTicket, formTicketInformation
             setLoadings((prevLoadings) => {
                 const newLoadings = [...prevLoadings];
                 newLoadings[index] = false;
-                activeStep === steps.length ? handleSubmit() : handleNext();
                 submitEdit();
                 return newLoadings;
             });
@@ -72,12 +54,6 @@ function UpdateTicket({ formSubmitTicket, setSubmitTicket, formTicketInformation
         setActiveStep(activeStep + 1);
     };
 
-    const handleBack = () => {
-        setActiveStep(activeStep - 1);
-    };
-    const handleSubmit = () => {
-        // console.log("Submit");
-    };
 
     const handleChangeStatus = (value: string) => {
         setSubmitTicket({ ...formSubmitTicket, Status: value });
@@ -148,20 +124,19 @@ function UpdateTicket({ formSubmitTicket, setSubmitTicket, formTicketInformation
                     // Alert การบันทึกสำเส็จ
                     Swal.fire({
                         icon: 'success',
-                        title: 'บันทึกสำเร็จ',
+                        title: 'Success',
                         showConfirmButton: false,
                         timer: 1500
                     });
                     setTimeout(() => {
                         window.location.href = "/"
-                    }, 3000)
+                    }, 1500)
 
                 } else {
-                    console.log("Error");
                     Swal.fire({
                         // Display Back-end text response 
                         icon: 'error',
-                        title: 'บันทึกไม่สำเร็จ',
+                        title: 'Error',
                         showConfirmButton: false,
                         timer: 1500
                     });
@@ -176,6 +151,7 @@ function UpdateTicket({ formSubmitTicket, setSubmitTicket, formTicketInformation
         >
             <Box
                 id='ticketFormFrame'
+                sx={{ marginTop: 9 }}
             >
 
                 <Typography id='textTopic'>

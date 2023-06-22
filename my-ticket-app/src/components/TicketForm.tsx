@@ -8,8 +8,8 @@ import TicketInformationPart1 from './TicketInformationPart1';
 import TicketInformationPart2 from './TicketInformationPart2';
 import Ticket from './Ticket';
 import Testlayout from './Testlayout';
-import { Box } from '@mui/system';
-import "./review.css";
+import { Box, margin } from '@mui/system';
+import "./sTicket.css";
 
 
 
@@ -71,40 +71,27 @@ function TicketForm() {
         }
     }
 
-
-
-    const handleNext = () => {
-        setActiveStep((prevActiveStep) => prevActiveStep + 1);
-    };
-
-    const handleBack = () => {
-        setActiveStep((prevActiveStep) => prevActiveStep - 1);
-    };
-
     return (
 
-        <div className="app">
-            <CssBaseline />
-            <Box
-                display="flex"
-                width="160vh"
-                alignItems="center"
-            >
-                <div style={{ flex: '30%' }}>
-                    {/* Left Section */}
-                    <div >
-                        <Ticket formTicketInformation={formTicketInformation} formContactInformation={formContactInformation} formSubmitTicket={formSubmitTicket} />
-                    </div>
+        <Box
+            display="flex"
+            width="140vh"
+        >
+            <div style={{ flex: '30%' }}>
+                {/* Left Section */}
+                <div style={{ marginTop: '21vh', paddingRight: 10 }}>
+                    <Ticket formTicketInformation={formTicketInformation} formContactInformation={formContactInformation} formSubmitTicket={formSubmitTicket} />
                 </div>
-                <div style={{ flex: '70%' }}>
-                    {/* Right Section */}
-                    <form className='form-container'>
-                        {/* <Ticket  /> */}
-                        <div className='text-start'>{PageDisplay()}</div>
-                    </form >
+            </div>
+            <div style={{ flex: '70%' }}>
+                {/* Right Section */}
+                <div >
+                    <div className='text-start'>{PageDisplay()}</div>
                 </div>
-            </Box>
-        </div>
+
+            </div>
+        </Box>
+
     );
 
 } export default TicketForm

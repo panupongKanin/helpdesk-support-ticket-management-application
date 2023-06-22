@@ -10,7 +10,7 @@ import { Button, Space, Table, InputRef, TableProps, Input } from 'antd';
 import { SearchOutlined } from '@ant-design/icons';
 import type { FilterConfirmProps } from 'antd/es/table/interface';
 
-import "./review.css"
+import "./sTicket.css"
 
 interface DataType {
     ID: number;
@@ -276,8 +276,7 @@ function TicketShow() {
 
     return (
 
-
-        <Container maxWidth="xl" sx={{ alignContent: 'center', marginTop: 20 }}>
+        <Container maxWidth="xl" sx={{ alignContent: 'center', marginTop: 5 }}>
             <Space style={{ marginBottom: 16 }}>
 
                 <Button
@@ -294,7 +293,7 @@ function TicketShow() {
                 dataSource={tickets}
                 onChange={handleChange}
                 pagination={{ pageSize: 2 }}
-                scroll={{ y: '72vh' }} />
+                scroll={{ y: '65vh' }} />
         </Container>
     );
 }
