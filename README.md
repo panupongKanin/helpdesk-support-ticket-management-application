@@ -43,6 +43,7 @@ Request Body:
   "title": "Example Ticket",
   "description": "This is an example ticket."
 }
+
 ```
 
 **Response:**
@@ -58,6 +59,7 @@ Request Body:
     "contactInformation": { ... },
     "status": { ... }
   }
+  
   ```
 
 ### List Tickets
@@ -66,6 +68,7 @@ Request Body:
 
 ```
 GET /ListTickets
+
 ```
 
 **Response:**
@@ -86,6 +89,7 @@ GET /ListTickets
       { ... }
     ]
   }
+  
   ```
 
 ### Get Ticket by ID
@@ -94,6 +98,7 @@ GET /ListTickets
 
 ```
 GET /GetTicket/{id}
+
 ```
 
 **Response:**
@@ -109,6 +114,7 @@ GET /GetTicket/{id}
     "contactInformation": { ... },
     "status": { ... }
   }
+  
   ```
 
 ### Update a Ticket
@@ -123,6 +129,7 @@ Request Body:
   "title": "Updated Ticket",
   "description": "This ticket has been updated."
 }
+
 ```
 
 **Response:**
@@ -140,6 +147,7 @@ Request Body:
  
 
  }
+ 
   ```
 
 *(Provide similar code examples for other endpoints)*
@@ -157,12 +165,4 @@ The API follows standard HTTP status codes and includes appropriate error messag
 
 The response body for error messages may include additional details about the error to assist developers in troubleshooting.
 
-## 6. Write and design for humans
 
-This API documentation aims to be clear, concise, and easy to understand. Each endpoint is explained in detail, including its purpose, expected request and response formats, and any specific requirements or limitations.
-
-## 7. Keep your documentation up-to-date
-
-It is essential to keep the API documentation up-to-date whenever changes are made to the API. Ensure that the documentation accurately reflects the current state of the API, including any updates or additions to endpoints, request/response formats, or authentication requirements.
-
-Note: The provided code is incomplete, and the documentation template assumes additional endpoints, models, and functionalities that are not present in the code snippet. Please provide the missing code or specify any specific endpoints or functionalities you want to be included in the documentation.
