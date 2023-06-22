@@ -37,9 +37,9 @@ type TicketInformation struct {
 
 type ContactInformation struct {
 	gorm.Model
-	Email   string
-	Phone   string
-	Address string
+	Email   string `valid:"email~Invalid Format,required~Please enter a Email"`
+	Phone   string `valid:"required~Please enter a Phone Numner,numeric~Please enter a valid Phone Number"`
+	Address string `valid:"required~Please enter a Address"`
 	Tickets []Ticket `gorm:"foreignKey:ContactInformationID"`
 }
 
