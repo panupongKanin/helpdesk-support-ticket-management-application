@@ -12,9 +12,10 @@ The API is designed for developers and administrators of a helpdesk support tick
 
 The typical user journey using this API involves the following steps:
 
-- Creating a ticket: Users can create a new support ticket by providing the ticket title and description.
+- Create a new ticket with these pieces of information; title, description, contact
+information, created timestamp, latest ticket update timestamp.
 - Retrieving tickets: Users can list all tickets or retrieve a specific ticket by its ID.
-- Updating a ticket: Users can update the details of a ticket, such as the title or description.
+- Update a ticket’s information and status (pending, accepted, resolved, rejected).
 - Managing ticket information: Users can create, retrieve, and update ticket information related to events, dates, venue, ticket prices, sales, restrictions, and terms and conditions.
 - Managing contact information: Users can create, retrieve, and update contact information associated with tickets, including email, phone number, and address.
 - Managing ticket status: Users can create, retrieve, and update ticket statuses, such as "open," "in progress," or "closed."
@@ -68,7 +69,6 @@ Request Body:
 
 ```
 GET /ListTickets
-
 ```
 
 **Response:**
@@ -98,7 +98,6 @@ GET /ListTickets
 
 ```
 GET /GetTicket/{id}
-
 ```
 
 **Response:**
