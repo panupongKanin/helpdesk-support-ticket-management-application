@@ -193,51 +193,6 @@ Retrieve a specific ticket status by its ID.
 **Parameters:**
 - `id` (integer): The ID of the ticket status.
 
-### ListUsers (GET /users)
-
-List all users.
-
-### GetUser (GET /user/:id)
-
-Retrieve a specific user by their ID.
-
-**Parameters:**
-- `id` (integer): The ID of the user.
-
-### CreateUser (POST /users)
-
-Create a new user
-
-.
-
-**Request Body:**
-```json
-{
-  "Username": "new_user",
-  "Email": "new_user@example.com",
-  "Password": "new_password"
-}
-```
-
-### UpdateUser (PATCH /users)
-
-Update user information.
-
-**Request Body:**
-```json
-{
-  "ID": 1,
-  "Username": "updated_user",
-  "Email": "updated_user@example.com"
-}
-```
-
-### DeleteUser (DELETE /users/:id)
-
-Delete a user by their ID.
-
-**Parameters:**
-- `id` (integer): The ID of the user.
 
 These are the available endpoints and their corresponding functionalities. You can interact with the API using the provided methods and parameters to perform the desired operations.
 ## 5. List your status codes and error messages
