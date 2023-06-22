@@ -51,37 +51,38 @@ The API endpoints and their respective functionalities are as follows:
 
 Here are a few code examples demonstrating the usage of the API endpoints:
 
-**Create a new support ticket:**
-```bash
-POST /CreateTicket
+### CreateTicket (POST /CreateTicket)
 
-Request Body:
+Create a new support ticket.
+
+**Request Body:**
+```json
 {
   "Title": "Support Ticket Title",
   "Description": "Support ticket description",
-
-
   "TicketInformationID": 1,
   "ContactInformationID": 1,
   "StatusID": 1
 }
 ```
 
-**Retrieve a specific ticket by ID:**
-```bash
-GET /GetTicket/1
-```
+### GetTicket (GET /GetTicket/:id)
 
-**List all tickets:**
-```bash
-GET /ListTickets
-```
+Retrieve a specific ticket by its ID.
 
-**Update the details of a ticket:**
-```bash
-PATCH /updateTicket
+**Parameters:**
+- `id` (integer): The ID of the ticket.
 
-Request Body:
+### ListTickets (GET /ListTickets)
+
+List all tickets.
+
+### UpdateTicket (PATCH /updateTicket)
+
+Update the details of a ticket.
+
+**Request Body:**
+```json
 {
   "ID": 1,
   "Title": "Updated Ticket Title",
@@ -92,11 +93,153 @@ Request Body:
 }
 ```
 
-These are just a few examples, and you can explore other endpoints and their functionalities as well.
+### CreatTicketInformation (POST /CreatTicketInformation)
 
-Please note that the above examples assume that you are interacting with the API using JSON data in the request body. Ensure to include the necessary headers and handle the responses accordingly.
+Create new ticket information.
 
-That concludes the API documentation. Feel free to explore the endpoints and functionalities to effectively manage support tickets and related information.
+**Request Body:**
+```json
+{
+  "EventDate": "2023-06-23",
+  "EventTime": "19:00",
+  "Venue": "Ticket Venue",
+  "TicketPrice": 29.99,
+  "Sales": "Ticket Sales Information",
+  "Restrictions": "Ticket Restrictions",
+  "TermsConditions": "Ticket Terms and Conditions"
+}
+```
+
+### ListTicketInformations (GET /ticketInformations)
+
+List all ticket information.
+
+### GetLastTicketInformationID (GET /getLastTicketInformationID)
+
+Get the last ticket information ID.
+
+### UpdateTicketInformation (PATCH /updateTicketInformation)
+
+Update ticket information.
+
+**Request Body:**
+```json
+{
+  "ID": 1,
+  "EventDate": "2023-06-23",
+  "EventTime": "20:00",
+  "Venue": "Updated Ticket Venue",
+  "TicketPrice": 39.99,
+  "Sales": "Updated Ticket Sales Information",
+  "Restrictions": "Updated Ticket Restrictions",
+  "TermsConditions": "Updated Ticket Terms and Conditions"
+}
+```
+
+### CreatContactInformation (POST /CreatContactInformation)
+
+Create new contact information.
+
+**Request Body:**
+```json
+{
+  "Email": "contact@example.com",
+  "Phone": "+1-123-456-7890",
+  "Address": "Contact Address"
+}
+```
+
+### ListContactInformations (GET /contactInformations)
+
+List all contact information.
+
+### GetLastContactInformationID (GET /getLastContactInformationID)
+
+Get the last contact information ID.
+
+### UpdateContactInformation (PATCH /updateContactInformation)
+
+Update contact information.
+
+**Request Body:**
+```json
+{
+  "ID": 1,
+  "Email": "updated_contact@example.com",
+  "Phone": "+1-987-654-3210",
+  "Address": "Updated Contact Address"
+}
+```
+
+### CreatStatus (POST /CreatStatus)
+
+Create new ticket status.
+
+**Request Body:**
+```json
+{
+  "StatusName": "New Status"
+}
+```
+
+### ListStatuses (GET /statuses)
+
+List all ticket statuses.
+
+### GetStatus (GET /status/:id)
+
+Retrieve a specific ticket status by its ID.
+
+**Parameters:**
+- `id` (integer): The ID of the ticket status.
+
+### ListUsers (GET /users)
+
+List all users.
+
+### GetUser (GET /user/:id)
+
+Retrieve a specific user by their ID.
+
+**Parameters:**
+- `id` (integer): The ID of the user.
+
+### CreateUser (POST /users)
+
+Create a new user
+
+.
+
+**Request Body:**
+```json
+{
+  "Username": "new_user",
+  "Email": "new_user@example.com",
+  "Password": "new_password"
+}
+```
+
+### UpdateUser (PATCH /users)
+
+Update user information.
+
+**Request Body:**
+```json
+{
+  "ID": 1,
+  "Username": "updated_user",
+  "Email": "updated_user@example.com"
+}
+```
+
+### DeleteUser (DELETE /users/:id)
+
+Delete a user by their ID.
+
+**Parameters:**
+- `id` (integer): The ID of the user.
+
+These are the available endpoints and their corresponding functionalities. You can interact with the API using the provided methods and parameters to perform the desired operations.
 ## 5. List your status codes and error messages
 
 The API follows standard HTTP status codes and includes appropriate error messages in the response body when an error occurs. Here are some common status codes:
