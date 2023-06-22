@@ -19,7 +19,7 @@ The typical user journey using this API involves the following steps:
 3. Updating a ticket: Users can update the details of a ticket, such as the title, description, contact information, ticket information, and status.
 4. Managing ticket information: Users can create, retrieve, and update ticket information related to events, dates, venue, ticket prices, sales, restrictions, and terms and conditions.
 5. Managing contact information: Users can create, retrieve, and update contact information associated with tickets, including email, phone number, and address.
-6. Managing ticket status: Users can create, retrieve, and update ticket statuses, such as "open," "in progress," or "closed."
+6. Managing ticket status: Users can create, retrieve, and update ticket statuses, such as ("pending", "accepted", "resolved", "rejected").
 7. Managing users: Users can list all users, retrieve user details, create new users, update user information, and delete users.
 
 ### 3. Start with the fundamentals
