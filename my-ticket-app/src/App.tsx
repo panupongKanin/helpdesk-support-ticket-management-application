@@ -1,26 +1,50 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import TicketForm from "./components/TicketForm";
+import { AppBar, Button, IconButton, Toolbar, Typography } from "@mui/material";
+import TicketShow from "./components/TicketShow";
+import TicketUpdateForm from "./components/TicketUpdateForm";
 
-function App() {
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+    <div className="app">
+      <Router>
+        <AppBar id="appbar" position="fixed">
+          <Toolbar>
+            <IconButton
+              size="large"
+              edge="start"
+              color="inherit"
+              aria-label="menu"
+              sx={{ mr: 2 }}
+            // onClick={handleOpen}
+            >
+              {/* <MenuIcon /> */}
+            </IconButton>
+            <Typography
+              id="textAppBar"
+              variant="h6"
+              component="div"
+              sx={{ flexGrow: 1 }}
+            >
+              My Ticket
+            </Typography>
+            {/* <Button id="buttonSignOutInAppBar" onClick={signout}>
+            Sign Out
+          </Button> */}
+          </Toolbar>
+        </AppBar>
+        <Routes>
+          <Route path="/" element={<TicketShow />} />
+          <Route path="/TicketForm" element={<TicketForm />} />
+          <Route path="/TicketUpdateForm" element={<TicketUpdateForm />} />
 
-export default App;
+        </Routes>
+
+      </Router>
+    </div>
+
+  );
+
+}

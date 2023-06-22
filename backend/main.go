@@ -12,6 +12,26 @@ func main() {
 	r := gin.Default()
 	r.Use(CORSMiddleware())
 
+	
+	r.POST("/CreateTicket", controller.CreateTicket)
+	r.GET("/ListTickets", controller.ListTickets)
+	r.GET("/GetTicket/:id", controller.GetTicket)
+	r.PATCH("/updateTicket", controller.UpdateTicket)
+
+	r.POST("/CreatTicketInformation", controller.CreatTicketInformation)
+	r.GET("/ticketInformations", controller.ListTicketInformations)
+	r.GET("/getLastTicketInformationID", controller.GetLastTicketInformationID)
+	r.PATCH("/updateTicketInformation", controller.UpdateTicketInformation)
+
+	r.POST("/CreatContactInformation", controller.CreatContactInformation)
+	r.GET("/contactInformations", controller.ListContactInformations)
+	r.GET("/getLastContactInformationID", controller.GetLastContactInformationID)
+	r.PATCH("/updateContactInformation", controller.UpdateContactInformation)
+
+	r.POST("/CreatStatus", controller.CreatStatus)
+	r.GET("/statuses", controller.ListStatuses)
+	r.GET("/status/:id", controller.GetStatus)
+
 	// User Routes
 	r.GET("/users", controller.ListUsers)
 	r.GET("/user/:id", controller.GetUser)
