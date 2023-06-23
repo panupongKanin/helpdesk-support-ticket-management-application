@@ -147,7 +147,7 @@ Create new contact information.
 ```json
 {
   "Email": "contact@example.com",
-  "Phone": "+1-123-456-7890",
+  "Phone": "11234567890",
   "Address": "Contact Address"
 }
 ```
@@ -169,7 +169,7 @@ Update contact information.
 {
   "ID": 1,
   "Email": "updated_contact@example.com",
-  "Phone": "+1-987-654-3210",
+  "Phone": "19876543210",
   "Address": "Updated Contact Address"
 }
 ```
